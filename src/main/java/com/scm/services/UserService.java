@@ -9,7 +9,7 @@ public interface UserService {
 
     User saveUser(User user);
     Optional<User> getUserById(String id);
-    User updateUser(User user);
+    Optional<User> updateUser(User user);
     void deleteUser(String id);
     boolean isUserExist(String userId);
     boolean isUserExistByEmail(String email);

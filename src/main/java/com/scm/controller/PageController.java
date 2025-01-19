@@ -1,12 +1,19 @@
 package com.scm.controller;
 
 import com.scm.forms.UserForm;
+import com.scm.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PageController {
+
+
+    //injecting service
+    @Autowired
+    private UserService userService;
 
     //Home Page
     @RequestMapping("/home")
@@ -55,6 +62,9 @@ public class PageController {
         //UserForm
         //validate
         //save to database
+
+        userService.saveUser(userForm);
+
         // message = registration successful
         //redirect to login page
         return "redirect:/signup";
