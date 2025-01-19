@@ -1,9 +1,9 @@
 package com.scm.controller;
 
+import com.scm.forms.UserForm;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PageController {
@@ -40,8 +40,24 @@ public class PageController {
     }
 
     @GetMapping("/signup")
-    public String signup(){
+    public String signup(Model model){
+        UserForm userForm = new UserForm();
+        model.addAttribute("userForm", userForm);
         return "signup";
+    }
+
+    //processing registration
+
+    @RequestMapping(value = "/do-register", method = RequestMethod.POST)
+    public String processRegister(@ModelAttribute UserForm userForm){
+        System.out.println("Processing registration");
+        //fetch form data
+        //UserForm
+        //validate
+        //save to database
+        // message = registration successful
+        //redirect to login page
+        return "redirect:/signup";
     }
 
 }
