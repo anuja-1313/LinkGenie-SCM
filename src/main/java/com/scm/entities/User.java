@@ -41,6 +41,7 @@ public class User {
 
     //user signup method
     //SELF, GOOGLE, Github
+    @Enumerated
     private Providers provider = Providers.SELF;
     private String providerId;
 

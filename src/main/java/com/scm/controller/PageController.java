@@ -1,7 +1,9 @@
 package com.scm.controller;
 
+import com.scm.entities.User;
 import com.scm.forms.UserForm;
 import com.scm.services.UserService;
+import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -63,7 +65,16 @@ public class PageController {
         //validate
         //save to database
 
-        userService.saveUser(userForm);
+        User user = User.builder()
+                .name(userForm.getName())
+                .email(userForm.getEmail())
+                .about(userForm.getAbout())
+                .password(userForm.getPassword())
+                .phoneNumber(userForm.getPhoneNumber())
+                .profilePic("/images/defaultpic.jpg")
+                .build();
+        User savedUser = userService.saveUser(user);
+        System.out.println("User Saved");
 
         // message = registration successful
         //redirect to login page
