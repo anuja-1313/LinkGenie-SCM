@@ -1,0 +1,12 @@
+
+<!-- successful sign up alert -->
+<div data-th-if="${session.message}"
+     data-th-object="${session.message}"
+        data-th-fragment="messagebox"
+        data-th-classappend="*{'text-'+type+'-600 border border-'+type+'-300
+        rounded-lg bg-'+type+'-100 dark:bg-'+type+'-500
+        dark:text-white'}"
+        class="p-4 mb-4 text-sm" role="alert">
+    <span class="font-medium"></span>
+    <span data-th-text="*{content}"></span>
+</div>
