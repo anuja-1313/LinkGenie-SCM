@@ -33,7 +33,9 @@
                 <form data-th-action="@{'/do-register'}"
                       method="post"
                       data-th-object="${userForm}"
-                      class="mt-5">
+                      class="mt-5"
+                      novalidate
+                >
                 <!-- name -->
                     <div class="mb-3">
                         <label
@@ -48,6 +50,11 @@
                                 placeholder="Enter name"
                                 required
                         />
+
+                        <p data-th-if="${#fields.hasErrors('name')}"
+                           data-th-errors="*{name}"
+                           class="text-red-600 px-1 py-2">Name is required</p>
+
                     </div>
 
                     <!-- email -->
@@ -66,6 +73,11 @@
                                 placeholder="example@email.com"
                                 required
                         />
+
+                        <p data-th-if="${#fields.hasErrors('email')}"
+                           data-th-errors="*{email}"
+                           class="text-red-600 px-1 py-2">Email is required</p>
+
                     </div>
 
                     <!-- password -->
@@ -84,6 +96,10 @@
                                 placeholder="Enter new password"
                                 required
                         />
+
+                        <p data-th-if="${#fields.hasErrors('password')}"
+                           data-th-errors="*{password}"
+                           class="text-red-600 px-1 py-2">Password is required</p>
                     </div>
 
                     <!-- phone number -->
@@ -102,6 +118,11 @@
                                 placeholder=""
                                 required
                         />
+
+                        <p data-th-if="${#fields.hasErrors('phoneNumber')}"
+                           data-th-errors="*{phoneNumber}"
+                           class="text-red-600 px-1 py-2">Invalid phone number</p>
+
                     </div>
 
                     <!-- about text -->
@@ -119,6 +140,9 @@
                             placeholder="Write something about yourself..."
                     ></textarea>
 
+                    <p data-th-if="${#fields.hasErrors('about')}"
+                       data-th-errors="*{about}"
+                       class="text-red-600 px-1 py-2">About is required</p>
 
                     <!-- buttons-->
                     <div class="mb-3 mt-3">

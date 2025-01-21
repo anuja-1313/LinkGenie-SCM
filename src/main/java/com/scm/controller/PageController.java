@@ -6,11 +6,15 @@ import com.scm.helper.Message;
 import com.scm.helper.MessageType;
 import com.scm.services.UserService;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.naming.Binding;
 
 @Controller
 public class PageController {
@@ -61,7 +65,7 @@ public class PageController {
     //processing registration
 
     @RequestMapping(value = "/do-register", method = RequestMethod.POST)
-    public String processRegister(@ModelAttribute UserForm userForm, HttpSession session){
+    public String processRegister(@Valid @ModelAttribute UserForm userForm,  BindingResult bindingResult, HttpSession session){
         System.out.println("Processing registration");
         //fetch form data
         //UserForm
@@ -76,6 +80,10 @@ public class PageController {
 //                .phoneNumber(userForm.getPhoneNumber())
 //                .profilePic("/images/defaultpic.jpg")
 //                .build();
+        //validating form data
+        if(bindingResult.hasErrors()){
+            return "signup";
+        }
 
         User user = new User();
         user.setName(userForm.getName());
