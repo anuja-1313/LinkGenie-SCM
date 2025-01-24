@@ -40,7 +40,7 @@ public class User implements UserDetails {
     //information
     private boolean emailVerified = true;
     private boolean phoneVerified = false;
-    private boolean enabled = false;
+    private boolean enabled = true;
 
     //user signup method
     //SELF, GOOGLE, Github
