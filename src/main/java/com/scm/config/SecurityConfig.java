@@ -4,6 +4,8 @@ import com.scm.services.impl.SecurityCustomUserDetailService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.context.annotation.Bean;
@@ -13,6 +15,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,6 +30,7 @@ import java.io.UnsupportedEncodingException;
 @Configuration
 public class SecurityConfig {
 
+    private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
     @Autowired
     private SecurityCustomUserDetailService userDetailService;
 
@@ -53,7 +57,7 @@ public class SecurityConfig {
             formLogin.loginPage("/login")
                     .loginProcessingUrl("/authenticate");
             formLogin.successForwardUrl("/user/dashboard");
-            formLogin.failureForwardUrl("/login?error=true");
+//            formLogin.failureForwardUrl("/login?error=true");
             formLogin.usernameParameter("email");
             formLogin.passwordParameter("password");
 
@@ -64,6 +68,14 @@ public class SecurityConfig {
 //                }
 //            });
         });
+
+        //customising logout page
+        httpSecurity.csrf(AbstractHttpConfigurer::disable);
+        httpSecurity.logout(logoutForm->{
+            logoutForm.logoutUrl("/do-logout");
+            logoutForm.logoutSuccessUrl("/login?logout=true");
+        });
+
 
         return httpSecurity.build();
     }

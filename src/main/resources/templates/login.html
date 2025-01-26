@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{})}">
+<html lang="en" data-th-replace="~{base :: parent(~{::#content},~{::title},~{})}">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<div id="content" style="margin-top: 25px;">
+<div id="content" style="margin-top: 35px">
 
     <div class="grid grid-cols-12">
         <div class="col-span-4 md:col-span-2 lg:col-span-3 xl:col-span-4"></div>
@@ -30,11 +30,20 @@
                     Manage Contacts Smarter, Not Harder.
                 </p>
 
-                <form data-th-action="@{'/do-register'}"
-                      method="post"
-                      data-th-object="${userForm}"
+
+                <div    class="font-bold text-red-600 mt-3 text-center"
+                        data-th-if="${param.error}">
+                    Invalid username or password</div>
+                <div
+                        class="font-bold text-green-600 mt-3 text-center"
+                        data-th-if="${param.logout}">
+                    You have been logged out</div>
+
+                <!-- login form -->
+                <form
                       class="mt-5"
-                      novalidate
+                      method="post"
+                      data-th-action="@{'/authenticate'}"
                 >
 
 
@@ -47,17 +56,18 @@
                         >Email</label
                         >
                         <input
+                                name="email"
                                 type="email"
                                 id="email"
-                                data-th-field="*{email}"
+
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="example@email.com"
                                 required
                         />
 
-                        <p data-th-if="${#fields.hasErrors('email')}"
-                           data-th-errors="*{email}"
-                           class="text-red-600 px-1 py-2">Email is required</p>
+<!--                        <p data-th-if="${#fields.hasErrors('email')}"-->
+<!--                           data-th-errors="*{email}"-->
+<!--                           class="text-red-600 px-1 py-2">Email is required</p>-->
 
                     </div>
 
@@ -70,24 +80,30 @@
                         >New Password</label
                         >
                         <input
+                                name="password"
                                 type="password"
                                 id="password"
-                                data-th-field="*{password}"
+
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Enter new password"
                                 required
                         />
 
-                        <p data-th-if="${#fields.hasErrors('password')}"
-                           data-th-errors="*{password}"
-                           class="text-red-600 px-1 py-2">Password is required</p>
+<!--                        <p data-th-if="${#fields.hasErrors('password')}"-->
+<!--                           data-th-errors="*{password}"-->
+<!--                           class="text-red-600 px-1 py-2">Password is required</p>-->
+<!--                    -->
+
                     </div>
 
 
                     <!-- buttons-->
                     <div class="mb-3 mt-3">
                         <button type="submit"
-                                class="px-3 py-2 rounded text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">Sign Up</button>
+                                class="px-3 py-2 rounded text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">Login</button>
+
+                        <button type="reset"
+                                class="ml-2 px-3 py-2 rounded text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">Reset</button>
 
                     </div>
 
