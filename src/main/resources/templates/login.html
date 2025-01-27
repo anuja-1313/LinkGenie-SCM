@@ -105,12 +105,27 @@
                         <button type="reset"
                                 class="ml-2 px-3 py-2 rounded text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">Reset</button>
 
+
                     </div>
-
-
 
                 </form>
 
+                <div class="social-buttons-container mt-5">
+                    <a data-th-href="@{'/oauth2/authorization/google'}">
+                        <img data-th-src="@{'/images/google.png'}"
+                             class="h-6 " alt="Login with Google">
+                    </a>
+
+                    <a>
+                        <img data-th-src="@{'/images/github.png'}"
+                             class="h-6 " alt="Login with Github">
+                    </a>
+
+                    <a>
+                        <img data-th-src="@{'/images/linkedin.png'}"
+                             class="h-6 " alt="Login with Linkedin">
+                    </a>
+                </div>
 
             </div>
         </div>

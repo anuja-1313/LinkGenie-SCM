@@ -31,8 +31,12 @@ import java.io.UnsupportedEncodingException;
 public class SecurityConfig {
 
     private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
+
     @Autowired
     private SecurityCustomUserDetailService userDetailService;
+
+    @Autowired
+    private OAuthAuthenticationSuccessHandler handler;
 
     //cofig of authentication provider
     @Bean
@@ -76,6 +80,11 @@ public class SecurityConfig {
             logoutForm.logoutSuccessUrl("/login?logout=true");
         });
 
+        //OAuth Configurations
+        httpSecurity.oauth2Login(oauth->{
+            oauth.loginPage("/login");
+            oauth.successHandler(null);
+        });
 
         return httpSecurity.build();
     }

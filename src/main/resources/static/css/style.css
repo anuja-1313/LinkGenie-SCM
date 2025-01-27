@@ -1,0 +1,7 @@
+/* Social buttons on login page */
+.social-buttons-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
