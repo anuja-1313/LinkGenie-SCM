@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+
 @Entity(name="user")
 @Table(name="users")
 @AllArgsConstructor
@@ -205,3 +206,5 @@ public class User implements UserDetails {
         this.contacts = contacts;
     }
 }
+
+
