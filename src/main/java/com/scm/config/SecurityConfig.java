@@ -83,7 +83,7 @@ public class SecurityConfig {
         //OAuth Configurations
         httpSecurity.oauth2Login(oauth->{
             oauth.loginPage("/login");
-            oauth.successHandler(null);
+            oauth.successHandler(handler);
         });
 
         return httpSecurity.build();

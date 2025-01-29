@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Entity(name="user")
@@ -27,6 +28,7 @@ public class User implements UserDetails {
     @Column(unique = true, nullable = false)
     private String email;
 
+    @Getter(AccessLevel.NONE)
     private String password;
 
     @Column(length = 1000)
@@ -40,7 +42,16 @@ public class User implements UserDetails {
     //information
     private boolean emailVerified = true;
     private boolean phoneVerified = false;
+
+    @Getter(value = AccessLevel.NONE)
     private boolean enabled = true;
+
+    @PrePersist
+    public void generateId() {
+        if (this.userId == null) {
+            this.userId = UUID.randomUUID().toString(); // Automatically generate UUID if not set
+        }
+    }
 
     //user signup method
     //SELF, GOOGLE, Github
