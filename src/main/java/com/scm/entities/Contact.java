@@ -34,3 +34,5 @@ public class Contact {
     private List<SocialLink> socialLink = new ArrayList<>();
 
 }
+
+
