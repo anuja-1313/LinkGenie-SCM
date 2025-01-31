@@ -55,11 +55,13 @@ public class PageController {
         return new String ("contact");
     }
 
+    //Login page
     @GetMapping("/login")
     public String login(){
         return new String ("login");
     }
 
+    //Registration page
     @GetMapping("/signup")
     public String signup(Model model){
         UserForm userForm = new UserForm();
@@ -77,14 +79,6 @@ public class PageController {
         //validate
         //save to database
 
-//        User user = User.builder()
-//                .name(userForm.getName())
-//                .email(userForm.getEmail())
-//                .about(userForm.getAbout())
-//                .password(userForm.getPassword())
-//                .phoneNumber(userForm.getPhoneNumber())
-//                .profilePic("/images/defaultpic.jpg")
-//                .build();
         //validating form data
         if(bindingResult.hasErrors()){
             return "signup";

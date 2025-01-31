@@ -38,7 +38,7 @@ public class SecurityConfig {
     @Autowired
     private OAuthAuthenticationSuccessHandler handler;
 
-    //cofig of authentication provider
+    //config of authentication provider
     @Bean
     public DaoAuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
