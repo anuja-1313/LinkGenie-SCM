@@ -47,12 +47,12 @@ public class User implements UserDetails {
     @Getter(value = AccessLevel.NONE)
     private boolean enabled = true;
 
-    @PrePersist
-    public void generateId() {
-        if (this.userId == null) {
-            this.userId = UUID.randomUUID().toString(); // Automatically generate UUID if not set
-        }
-    }
+//    @PrePersist
+//    public void generateId() {
+//        if (this.userId == null) {
+//            this.userId = UUID.randomUUID().toString(); // Automatically generate UUID if not set
+//        }
+//    }
 
     //user signup method
     //SELF, GOOGLE, Github
