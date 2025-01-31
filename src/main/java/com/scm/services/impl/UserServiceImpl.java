@@ -22,7 +22,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepo userRepo;
 
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -96,6 +95,14 @@ public class UserServiceImpl implements UserService {
     public List<User> getAllUsers() {
         return userRepo.findAll();
     }
+
+    @Override
+    public User getUserByEmail(String email) {
+        //return user corresponding to email
+        return userRepo.findByEmail(email).orElse(null);
+    }
+
+
 }
 
 
