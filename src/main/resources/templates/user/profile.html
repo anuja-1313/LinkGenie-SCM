@@ -7,13 +7,25 @@
 </head>
 <body>
 
-<div id="content" style="margin-top: 25px;">
-    <h1>Welcome to profile page</h1>
 
-    <p>Lorem ipsum dolor sit amet, consectetur
-        adipisicing elit. Quidem officia dolore
-        voluptates dolorum ut placeat tenetur
-        perspiciatis commodi facilis laboriosam.</p>
+<div id="content">
+    <!-- sidebar when user is logged in -->
+    <div data-th-if="${loggedInUser}">
+        <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+    </div>
+
+    <div class="sm:pl-64 pt-20" style="height: 1000px">
+
+        <div class="flex justify-center flex-col items-center">
+        <h1 class="text-5xl">Welcome to Profile page</h1>
+
+        <p>Lorem ipsum dolor sit amet, consectetur
+            adipisicing elit. Quidem officia dolore
+            voluptates dolorum ut placeat tenetur
+            perspiciatis commodi facilis laboriosam.</p>
+
+        </div>
+    </div>
 </div>
 
 <script>
