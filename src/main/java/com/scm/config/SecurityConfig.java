@@ -60,17 +60,11 @@ public class SecurityConfig {
         httpSecurity.formLogin(formLogin ->{
             formLogin.loginPage("/login")
                     .loginProcessingUrl("/authenticate");
-            formLogin.successForwardUrl("/user/dashboard");
+            formLogin.successForwardUrl("/user/profile");
 //            formLogin.failureForwardUrl("/login?error=true");
             formLogin.usernameParameter("email");
             formLogin.passwordParameter("password");
 
-//            formLogin.failureHandler(new AuthenticationFailureHandler() {
-//                @Override
-//                public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-//                    throw new UnsupportedEncodingException("Error");
-//                }
-//            });
         });
 
         //customising logout page

@@ -1,12 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-th-replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-th-text="${loggedInUser.name} +' | LinkGenie'">Profile Page</title>
 </head>
 <body>
-        <h1>This is user profile page</h1>
-        <h1 data-th-text="${loggedInUser.name}"></h1>
-        <h1 data-th-text="${loggedInUser.email}"></h1>
+
+<div id="content" style="margin-top: 25px;">
+    <h1>Welcome to profile page</h1>
+
+    <p>Lorem ipsum dolor sit amet, consectetur
+        adipisicing elit. Quidem officia dolore
+        voluptates dolorum ut placeat tenetur
+        perspiciatis commodi facilis laboriosam.</p>
+</div>
+
+<script>
+    console.log("Profile page");
+</script>
+
 </body>
 </html>
