@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import org.slf4j.Logger;
 
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -103,6 +104,20 @@ public class ContactController {
                 .build());
 
         return "redirect:/user/contact/add";
+
+    }
+
+    //view contacts
+    @RequestMapping
+    public String viewContacts(Model model, Authentication authentication){
+
+        //load all user contacts
+        String username = Helper.getEmailOfLoggedInUser(authentication);
+        User user = userService.getUserByEmail(username);
+        List<Contact> contacts = contactService.getByUser(user);
+        model.addAttribute("contacts", contacts);
+
+        return "user/contacts";
     }
 
 }
