@@ -35,7 +35,8 @@
                     <form action="" class="mt-8"
                     data-th-action="@{'/user/contact/add'}"
                     method="post"
-                    data-th-object="${contactForm}">
+                    data-th-object="${contactForm}"
+                    enctype="multipart/form-data">
 
                         <!-- name input -->
                     <div class="mb-3">
@@ -168,9 +169,15 @@
                         <!-- Contact image -->
                         <div class="mb-3">
 
-                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Contact Image</label>
-                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400
-                            focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Upload Contact Image</label>
+                            <input id="image_file_input"
+                                    class="block w-full text-sm text-gray-900 border border-gray-300
+                            rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400
+                            focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file"
+                            data-th-field="*{contactImage}">
+
+                            <img class="max-h-48 mx-auto m-3 rounded-lg"
+                                    src="" id="upload_image_preview" alt="">
 
                         </div>
 
@@ -206,6 +213,7 @@
     </div>
 </div>
 
+<script data-th-src="@{'/js/admin.js'}"></script>
 <script>
     console.log("Contact page");
 </script>
