@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import org.slf4j.Logger;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.UUID;
@@ -109,13 +111,22 @@ public class ContactController {
 
     //view contacts
     @RequestMapping
-    public String viewContacts(Model model, Authentication authentication){
+    public String viewContacts(@RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size",  defaultValue = "10") int size,
+            @RequestParam(value = "sortBy", defaultValue = "name") String sortBy,
+            @RequestParam(value = "direction", defaultValue = "asc") String direction,
+            Model model, Authentication authentication){
 
         //load all user contacts
         String username = Helper.getEmailOfLoggedInUser(authentication);
+
         User user = userService.getUserByEmail(username);
-        List<Contact> contacts = contactService.getByUser(user);
-        model.addAttribute("contacts", contacts);
+
+        Page<Contact> pageContacts = contactService.getByUser(user,page,size,sortBy,direction);
+
+        pageContacts.isFirst();
+
+        model.addAttribute("pageContacts", pageContacts);
 
         return "user/contacts";
     }
