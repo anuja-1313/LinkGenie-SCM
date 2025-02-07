@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-th-replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-th-text="'Search'">Search Page</title>
+</head>
+<body>
+
+
+<div id="content">
+    <!-- sidebar when user is logged in -->
+    <div data-th-if="${loggedInUser}">
+        <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+    </div>
+
+    <div class="sm:pl-64 pt-20" style="height: 1000px">
+
+        <div class="flex justify-center flex-col items-center">
+            <h1 class="text-5xl">Search Results</h1>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    console.log("Search page");
+</script>
+
+</body>
+</html>

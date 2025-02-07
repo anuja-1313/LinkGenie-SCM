@@ -49,10 +49,22 @@ public class ContactServiceImpl implements ContactService {
         contactRepo.delete(contact);
     }
 
+    //Search contact methods
     @Override
-    public List<Contact> search(String name, String email, String phoneNumber) {
+    public List<Contact> searchByName(String nameKeyword) {
         return List.of();
     }
+
+    @Override
+    public List<Contact> searchByEmail(String emailKeyword) {
+        return List.of();
+    }
+
+    @Override
+    public List<Contact> searchByPhoneNumber(String phoneNumberKeyword) {
+        return List.of();
+    }
+
 
     @Override
     public List<Contact> getByUserId(String userId) {
