@@ -3,6 +3,7 @@ package com.scm.controller;
 import com.scm.entities.Contact;
 import com.scm.entities.User;
 import com.scm.forms.ContactForm;
+import com.scm.helper.AppConstants;
 import com.scm.helper.Helper;
 import com.scm.helper.Message;
 import com.scm.helper.MessageType;
@@ -122,11 +123,12 @@ public class ContactController {
 
         User user = userService.getUserByEmail(username);
 
-        Page<Contact> pageContacts = contactService.getByUser(user,page,size,sortBy,direction);
+        Page<Contact> pageContact = contactService.getByUser(user,page,size,sortBy,direction);
 
-        pageContacts.isFirst();
+//        pageContact.isFirst();
 
-        model.addAttribute("pageContacts", pageContacts);
+        model.addAttribute("pageContact", pageContact);
+        model.addAttribute("pageSize", AppConstants.PAGE_SIZE);
 
         return "user/contacts";
     }
