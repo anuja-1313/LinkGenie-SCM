@@ -150,6 +150,10 @@ public class ContactController {
         logger.info("field {} keyword {}", contactSearchForm.getField(),
                 contactSearchForm.getValue());
 
+        // Redirect to contacts if field is empty
+        if (contactSearchForm.getField().isEmpty()) {
+            return "redirect:/user/contact";
+        }
 
         var user = userService.getUserByEmail(Helper.getEmailOfLoggedInUser(authentication));
 
