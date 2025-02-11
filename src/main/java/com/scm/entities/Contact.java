@@ -1,10 +1,12 @@
 package com.scm.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
 
 import java.util.*;
 import java.util.ArrayList;
@@ -38,9 +40,11 @@ public class Contact {
     //private List<String> socialLinks = new ArrayList<>();
 
     @ManyToOne
+    @JsonIgnoreProperties("contacts")
     private User user;
 
     @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<SocialLink> socialLink = new ArrayList<>();
 
 }
