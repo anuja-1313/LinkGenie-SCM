@@ -1,4 +1,5 @@
 console.log("contacts.js");
+const baseURL = "http://localhost:8080";
 const viewContactModal=document.getElementById('view_contact_modal');
 
 // options with default values
@@ -38,7 +39,7 @@ function closeContactModal(){
 async function loadContactData(id) {
   console.log(id);
   try {
-    const response = await fetch(`http://localhost:8080/api/contact/${id}`);
+    const response = await fetch(`${baseURL}/api/contact/${id}`);
     const data = await response.json();
     console.log(data);
 
@@ -94,6 +95,25 @@ async function loadContactData(id) {
   } catch (error) {
     console.log("Error: ", error);
   }
+}
+
+//DELETE contact
+
+async function deleteContact(id){
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const url = `${baseURL}/user/contact/delete/` + id;
+        window.location.replace(url);
+      }
+    });
 }
 
 
