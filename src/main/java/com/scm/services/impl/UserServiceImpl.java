@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
         user.setRoleList(List.of(AppConstants.ROLE_USER));
 
         logger.info(user.getProvider().toString());
+
         return userRepo.save(user);
     }
 
