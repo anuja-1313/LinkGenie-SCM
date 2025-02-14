@@ -41,11 +41,11 @@ public class User implements UserDetails {
     private String phoneNumber;
 
     //information
-    private boolean emailVerified = true;
+    private boolean emailVerified = false;
     private boolean phoneVerified = false;
 
     @Getter(value = AccessLevel.NONE)
-    private boolean enabled = true;
+    private boolean enabled = false;
 
 //    @PrePersist
 //    public void generateId() {
@@ -174,8 +174,9 @@ public class User implements UserDetails {
         this.phoneVerified = phoneVerified;
     }
 
+    @Override
     public boolean isEnabled() {
-        return enabled;
+        return this.enabled;
     }
 
     public void setEnabled(boolean enabled) {

@@ -38,6 +38,9 @@ public class SecurityConfig {
     @Autowired
     private OAuthAuthenticationSuccessHandler handler;
 
+    @Autowired
+    private AuthFailureHandler authFailureHandler;
+
     //config of authentication provider
     @Bean
     public DaoAuthenticationProvider authenticationProvider(){
@@ -64,6 +67,9 @@ public class SecurityConfig {
 //            formLogin.failureForwardUrl("/login?error=true");
             formLogin.usernameParameter("email");
             formLogin.passwordParameter("password");
+
+
+            formLogin.failureHandler(authFailureHandler);
 
         });
 
