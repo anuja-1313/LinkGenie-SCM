@@ -18,6 +18,8 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Setter
+@Getter
 public class User implements UserDetails {
 
     @Id
@@ -47,12 +49,6 @@ public class User implements UserDetails {
     @Getter(value = AccessLevel.NONE)
     private boolean enabled = false;
 
-//    @PrePersist
-//    public void generateId() {
-//        if (this.userId == null) {
-//            this.userId = UUID.randomUUID().toString(); // Automatically generate UUID if not set
-//        }
-//    }
 
     //user signup method
     //SELF, GOOGLE, Github
@@ -90,6 +86,8 @@ public class User implements UserDetails {
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roleList = new ArrayList<>();
+
+    private String emailToken;
 
     public List<String> getRoleList() {
         return roleList;
