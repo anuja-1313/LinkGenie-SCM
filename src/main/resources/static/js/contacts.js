@@ -56,7 +56,6 @@ async function loadContactData(id) {
     const addressElement = document.querySelector("#contact_address");
     if (addressElement) addressElement.innerHTML = data.address || "No Address Provided";
 
-    // Fixed incorrect ID reference
     const phoneElement = document.querySelector("#contact_number");
     if (phoneElement) phoneElement.innerHTML = data.phoneNumber || "No Phone Number";
 
@@ -66,7 +65,7 @@ async function loadContactData(id) {
     // Handle Favorite status
     const contactFavorite = document.querySelector("#contact_favorite");
 
-    console.log("Favorite status:", data.favourite); // Debugging
+    console.log("Favorite status:", data.favourite);
 
     if (contactFavorite) {
       if (Boolean(data.favourite) === true) {
