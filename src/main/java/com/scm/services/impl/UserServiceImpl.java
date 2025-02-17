@@ -47,7 +47,6 @@ public class UserServiceImpl implements UserService {
 
         logger.info(user.getProvider().toString());
 
-
         //email notification
         String emailToken = UUID.randomUUID().toString();
         user.setEmailToken(emailToken);
