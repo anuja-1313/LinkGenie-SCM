@@ -25,7 +25,7 @@ public class AuthFailureHandler implements AuthenticationFailureHandler {
             HttpSession session = request.getSession();
             session.setAttribute("message",
                     Message.builder()
-                            .content("User is disabled! Sent link to verify on email id.")
+                            .content("User is disabled. Please verify your email via the link sent to your registered email.")
                             .type(MessageType.red).build());
 
             response.sendRedirect("/login");

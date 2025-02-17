@@ -77,9 +77,6 @@ public class ContactController {
         //Process contact image
         logger.info("file information : ", contactForm.getContactImage().getOriginalFilename());
 
-        //upload image
-//        String filename = UUID.randomUUID().toString();
-//        String fileURL = imageService.uploadImage(contactForm.getContactImage(),filename);
 
         //converting form to contact
         Contact contact = new Contact();
@@ -92,8 +89,6 @@ public class ContactController {
         contact.setWebsiteLink(contactForm.getWebsiteLink());
         contact.setLinkedinLink(contactForm.getLinkedInLink());
         contact.setUser(user);
-//        contact.setPicture(fileURL);
-//        contact.setCloudinaryImagePublicId(filename);
 
         if (contactForm.getContactImage() != null && !contactForm.getContactImage().isEmpty()) {
             String filename = UUID.randomUUID().toString();

@@ -88,37 +88,6 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
         }
 
 
-        /*
-        DefaultOAuth2User user =(DefaultOAuth2User) authentication.getPrincipal();
-
-//        logger.info(user.getName());
-//
-//        user.getAttributes().forEach((key,value) -> {
-//           logger.info("{} => {}", key, value);
-//        });
-//
-//        logger.info(user.getAuthorities().toString());
-
-        //save data in database
-        String email =user.getAttribute("email").toString();
-        String name =user.getAttribute("name").toString();
-        String picture =user.getAttribute("picture").toString();
-
-        //create user and save in database
-        User user1 = new User();
-        user1.setEmail(email);
-        user1.setName(name);
-        user1.setProfilePic(picture);
-        user1.setPassword("password");
-        user1.setProvider(Providers.GOOGLE);
-        user1.setEnabled(true);
-        user1.setEmailVerified(true);
-        user1.setProviderId(user.getName());
-        user1.setRoleList(List.of(AppConstants.ROLE_USER));
-        user1.setAbout("Account created using Google.");
-
-        */
-
         User user2 = userRepo.findByEmail(user.getEmail()).orElse(null);
         if(user2 == null){
             userRepo.save(user);

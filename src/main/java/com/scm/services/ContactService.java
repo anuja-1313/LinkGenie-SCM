@@ -3,7 +3,6 @@ package com.scm.services;
 import com.scm.entities.Contact;
 import com.scm.entities.User;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 

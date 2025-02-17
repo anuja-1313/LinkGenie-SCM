@@ -74,10 +74,7 @@ public class PageController {
     @RequestMapping(value = "/do-register", method = RequestMethod.POST)
     public String processRegister(@Valid @ModelAttribute UserForm userForm,  BindingResult bindingResult, HttpSession session){
         System.out.println("Processing registration");
-        //fetch form data
-        //UserForm
-        //validate
-        //save to database
+
 
         //validating form data
         if(bindingResult.hasErrors()){
