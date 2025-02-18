@@ -8,9 +8,51 @@
 <body>
 
 <div id="content" style="margin-top: 40px;">
-    <div class="flex justify-center flex-col items-center">
-        <h1 class="text-2xl">About</h1>
-    </div>
+    <!-- Banner Section -->
+    <section>
+        <div class="pt-10 pb-10 text-center bg-blue-600 text-white">
+            <h2 class="text-2xl font-bold mb-4">About Us</h2>
+            <p class="text-md mb-8">We are a dedicated team focused on simplifying communication and relationship
+                management through innovative, user-friendly solutions like LinkGenie.</p>
+        </div>
+    </section>
+
+    <!-- Meet the team Section -->
+    <section
+             class="py-20 pt-10 pb-20 bg-white dark:bg-gray-900">
+        <div class="container mx-auto text-center">
+            <h2 class="text-2xl font-bold mb-12 animate__animated animate__fadeInUp">
+                Meet the Team</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition duration-300 transform hover:scale-105">
+                    <img src="/images/ceo.webp" class="w-75 h-75 rounded">
+                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-900">Jane Doe</h3>
+                    <p class="text-gray-600">CEO & Founder</p>
+                </div>
+                <div class="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition duration-300 transform hover:scale-105">
+                    <img src="/images/techlead.jpg" class="w-75 h-75 rounded">
+                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-900">Mike Ross</h3>
+                    <p class="text-gray-600">Tech Lead</p>
+                </div>
+                <div class="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition duration-300 transform hover:scale-105">
+                    <img src="/images/backdev.webp" class="w-75 h-75 rounded">
+                    <h3 class="text-xl font-semibold mb-2 dark:text-gray-900">John Doe</h3>
+                    <p class="text-gray-600">Backend Developer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 LinkGenie. All rights reserved.</p>
+            <p>Follow us on <a href="#" class="text-blue-400">Facebook</a>, <a href="#"
+                                                                               class="text-blue-400">Twitter</a>, and <a
+                    href="#" class="text-blue-400">Instagram</a>.</p>
+        </div>
+    </footer>
+
 </div>
 
 </body>
